@@ -2,8 +2,11 @@ FROM archlinux:latest
 
 RUN echo 'Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
 
-RUN pacman -Syu --noconfirm && \
-    pacman -S --noconfirm vim xorg adobe-source-han-sans-cn-fonts git fakeroot binutils nss libxss gtk3 alsa-lib pulseaudio && \
+RUN pacman --noconfirm -Sy archlinux-keyring && \
+    pacman-key --init && \
+    pacman-key --populate archlinux && \
+    pacman -Su --noconfirm && \
+    pacman -S --noconfirm vim xorg adobe-source-han-sans-cn-fonts git fakeroot binutils nss libxss gtk3 alsa-lib pulseaudio fcitx5-gtk && \
     pacman -Scc --noconfirm
 
 ARG USER_ID

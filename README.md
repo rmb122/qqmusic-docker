@@ -12,4 +12,8 @@
 docker-compose up -d
 ```
 
-需要注意的是依赖 pulseaudio, 你可能需要安装 pulseaudio 或者兼容层 (例如:  pipewire-pulse)
+需要注意的是依赖 pulseaudio, 因此你可能需要在宿主机上安装 pulseaudio 或者兼容层 (例如:  pipewire-pulse)
+
+## 免责提示
+
+由于 X Server 的特殊性, 即使使用 Docker 也不能做到完全阻止所有攻击面. 虽然概率极低, 但是攻击者 (e.g. 腾讯), 完全可以在容器内达到类似[按键记录器](https://wiki.archlinux.org/title/Bubblewrap#Using_X11:~:text=While%20bwrap%20provides,a%20wayland%20compositor.)的效果. 因此如果你对腾讯非常介意, 请勿使用本项目, 可以选择使用虚拟机启动 QQ. 另外, 也不要在容器内运行任何不信任的代码.
